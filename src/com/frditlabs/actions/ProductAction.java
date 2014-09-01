@@ -15,19 +15,13 @@ public class ProductAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	Product product;
 	List<Product> productos = new ArrayList<Product>();
-	public List<Product> getProductos() {
-		return productos;
-	}
-
-	public void setProductos(List<Product> productos) {
-		this.productos = productos;
-	}
-
+	
 	/**
 	 * (non-Javadoc)
 	 * @see com.opensymphony.xwork2.ActionSupport#execute()
 	 * listar - guardar - mostrar - borrar  
 	 */
+	
 	@Action(value="productos", results={
 			@Result(name="success",location="product.jsp")
 		})
@@ -74,6 +68,14 @@ public class ProductAction extends ActionSupport {
 
 	public void setProduct(Product product) {
 		this.product = product;
+	}
+	
+	public List<Product> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(List<Product> productos) {
+		this.productos = productos;
 	}
 
 }
