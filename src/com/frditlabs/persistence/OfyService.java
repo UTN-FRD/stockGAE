@@ -6,15 +6,16 @@ import com.googlecode.objectify.ObjectifyFactory;
 import com.googlecode.objectify.ObjectifyService;
 
 public class OfyService {
-    static {
-        factory().register(Product.class);
-    }
+	
+	static {
+		factory().register(Product.class);
+	}
 
-    public static Objectify ofy() {
-        return ObjectifyService.ofy();
-    }
+	public static Objectify ofy() {
+		return ObjectifyService.ofy();
+	}
 
-    public static ObjectifyFactory factory() {
-        return ObjectifyService.factory();
-    }
+	public static ObjectifyFactory factory() {
+		return ObjectifyService.factory();
+	}
 }
