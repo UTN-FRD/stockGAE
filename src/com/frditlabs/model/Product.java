@@ -1,16 +1,23 @@
 package com.frditlabs.model;
 
+import java.util.List;
+
+import com.googlecode.objectify.Objectify;
+import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 
 @Entity
 public class Product {
-	@Id private Long id;
+	
+	@Id
+	private Long id;
 	private String name;
 	private String description;
 	private String userMail;
 
-	public Product(){}
+	public Product() {
+	}
 
 	public String getName() {
 		return name;

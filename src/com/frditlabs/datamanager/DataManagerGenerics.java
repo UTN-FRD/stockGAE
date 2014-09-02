@@ -4,7 +4,6 @@ import static com.frditlabs.persistence.OfyService.ofy;
 
 import java.util.List;
 
-import com.google.appengine.api.NamespaceManager;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 
@@ -27,6 +26,10 @@ public class DataManagerGenerics <T> {
 	
 	public List<T> getAll() {
 		return ofy().load().type( clazz ).offset(0).limit(10).list();
+	}
+
+	public List<T> filter(String field, Object criteria) {
+		return ofy().load().type( clazz ).filter(field, criteria).offset(0).limit(10).list();
 	}
 
 }

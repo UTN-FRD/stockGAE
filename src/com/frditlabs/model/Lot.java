@@ -2,13 +2,18 @@ package com.frditlabs.model;
 
 import java.util.Date;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
+
+@Entity
 public class Lot {
-	private Long id;
+	@Id private Long id;
 	private Date createDate;
 	private Date dueDate;
 	private double initialAmount;
 	private double currentAmount;
-	private Long product;
+	@Index private Long product;
 
 	public Lot(){}
 

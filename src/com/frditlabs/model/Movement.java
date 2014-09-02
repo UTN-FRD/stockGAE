@@ -2,12 +2,17 @@ package com.frditlabs.model;
 
 import java.util.Date;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
+
+@Entity
 public class Movement {
-	private Long id;
+	@Id private Long id;
 	private Date date;
 	private Long cantidad;
 	private String description;
-	private Long lotId;
+	@Index private Long lotId;
 
 	public Movement(){}
 

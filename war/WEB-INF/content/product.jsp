@@ -70,17 +70,36 @@
 						<a href="#" class="list-group-item">
 							<h4 class="list-group-item-heading">Lista de Productos</h4>
 						</a>
-						<table>
+						<table class="table table-striped table-bordered table-hover" width="100%">
 							<tr>
-								<th><h3>Nombre</h3></th>
 								<th><h3>ID</h3></th>
-								<th><h3>Descripcion</h3></th>
+								<th><h3>Nombre</h3></th>
+								<th><h3>Descripción</h3></th>
+								<th></th>
 							</tr>
 							<s:iterator value="productos" var="p">
 								<tr>
-									<td><p class="list-group-item-text"><s:property value="#p.name"/></p></td>
-									<td><p class="list-group-item-text"><s:property value="#p.id"/></p></td>
-									<td><p class="list-group-item-text"><s:property value="#p.description"/></p></td>
+									<td>
+										<p class="list-group-item-text">
+											<s:property value="#p.id"/>
+										</p>
+									</td>
+									<td>
+										<p class="list-group-item-text">
+											<s:property value="#p.name"/>
+										</p>
+									</td>
+									<td>
+										<p class="list-group-item-text">
+											<s:property value="#p.description"/>
+										</p>
+									</td>
+									<td>
+										<s:url var="lote" action="lots" >
+											<s:param name="productId" value="#p.id"></s:param>
+										</s:url>
+										<s:a href="%{lote}" cssClass="btn btn-primary btn-xs">Editar</s:a>
+									</td>
 								</tr>
 							</s:iterator>
 						</table>
