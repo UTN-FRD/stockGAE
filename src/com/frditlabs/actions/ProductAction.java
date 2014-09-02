@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 
+import com.frditlabs.datamanager.DataManagerGenerics;
 import com.frditlabs.datamanager.ProductManager;
 import com.frditlabs.model.Product;
 import com.opensymphony.xwork2.ActionSupport;
@@ -14,7 +15,8 @@ public class ProductAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 	Product product;
-	List<Product> productos = new ArrayList<Product>();
+	private List<Product> productos;
+	private DataManagerGenerics<Product> mngr = new ProductManager();;
 	
 	/**
 	 * (non-Javadoc)
@@ -22,11 +24,13 @@ public class ProductAction extends ActionSupport {
 	 * listar - guardar - mostrar - borrar  
 	 */
 	
+	
 	@Action(value="productos", results={
-			@Result(name="success",location="product.jsp")
+			@Result(name="success", location="product.jsp")
 		})
 	public String execute(){
 		//llamada al DS
+		productos = new ArrayList<Product>();
 		product = new Product();
 		product.setId(5l);
 		product.setDescription("list descripcion");
@@ -45,21 +49,31 @@ public class ProductAction extends ActionSupport {
 		product.setName("list 7");
 		productos.add(product);
 		
-		ProductManager.save(product);
+		mngr.save(product);
+		
+		productos = mngr.getAll();
 		
 		return SUCCESS;
 	}
 
-	@Action(value="producto", results={
-			@Result(name="success",location="product.jsp")
+	@Action(value="product", results={
+			@Result(name="success", location="product.jsp")
 		})
-	public String showProduct(){
+	public String saveProduct(){
 		// http://localhost:8888/producto?product.id=1
-		// en este caso el objeto producto ya está inicializado y el único valor que tiene es el id 
-		product.setDescription("show Product");
-		product.setName("Show");
+		// en este caso el objeto producto ya está inicializado y el único valor que tiene es el id
+		//productos.add(product);
+		mngr.save(product);
+		productos = mngr.getAll();
+		return SUCCESS;
+	}
+	
+	public String deleteProduct() {
+		// ampliar - consultar
+		mngr.delete(product);
 		
 		return SUCCESS;
+		
 	}
 
 	public Product getProduct() {

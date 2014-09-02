@@ -36,14 +36,14 @@
 		<div class="row center-block">
 			<div class="" style="width:50%;margin:auto">
 				<div class="well well-lg">
-					<form action="product" class="form-horizontal">
+					<form action="product" class="form-horizontal" method="post">
 						<fieldset>
 							<legend>Alta y modificaci&oacute;n de productos:</legend>
 							<div class="form-group">
 								<div class="form-group">
 				                    <label for="name" class="col-lg-2 control-label">Nombre</label>
 				                    <div class="col-lg-10">
-				                      <input type="text" class="form-control" name="name" id="name" placeholder="Nombre del producto">
+				                      <input type="text" class="form-control" name="product.name" id="name" placeholder="Nombre del producto" />
 				                    </div>
 				                </div>
 							</div>
@@ -51,12 +51,12 @@
 								<div class="form-group">
 				                    <label for="description" class="col-lg-2 control-label">Descripci&oacute;n</label>
 				                    <div class="col-lg-10">
-				                      <input type="text" class="form-control" id="description" name="description" placeholder="Descripción del producto">
+				                      <input type="text" class="form-control" id="description" name="product.description" placeholder="Descripción del producto">
 				                    </div>
 				                </div>
 							</div>
-							<input type="hidden" name="productId" id="productId">
-							<input type="submit" class="btn btn-primary" value="Guardar">
+							<input type="hidden" name="product.id" id="id">
+							<s:submit value="Guardar" type="input" cssClass="btn btn-primary"></s:submit>
 						</fieldset>
 					</form>
 				</div>
