@@ -4,7 +4,7 @@
 
 <ul class="nav navbar-nav navbar-right">
 <% if( request.getUserPrincipal() == null ){ %>
-    <li><a href="product">Acceder</a></li>
+	<li><a href="product">Acceder</a></li>
 <% }else{ %>
 	<li class="dropdown">
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= request.getUserPrincipal().getName() %> <b class="caret"></b></a>
@@ -22,4 +22,3 @@ $(".dropdown").click(function(){
 	$(this).toggleClass("open");
 });
 </script>
-  

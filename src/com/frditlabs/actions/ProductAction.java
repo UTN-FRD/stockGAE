@@ -15,8 +15,8 @@ public class ProductAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 	Product product;
-	private List<Product> productos;
-	private DataManagerGenerics<Product> mngr = new ProductManager();;
+	private List<Product> products;
+	private DataManagerGenerics<Product> mngr = new ProductManager();
 	
 	/**
 	 * (non-Javadoc)
@@ -30,28 +30,28 @@ public class ProductAction extends ActionSupport {
 		})
 	public String execute(){
 		//llamada al DS
-		productos = new ArrayList<Product>();
+		products = new ArrayList<Product>();
 		product = new Product();
 		product.setId(5l);
 		product.setDescription("list descripcion");
 		product.setName("list");
-		productos.add(product);
+		products.add(product);
 		
 		product = new Product();
 		product.setId(6l);
 		product.setDescription("list 5 descripcion");
 		product.setName("list 6");
-		productos.add(product);
+		products.add(product);
 		
 		product = new Product();
 		product.setId(7l);
 		product.setDescription("list descripcion 7");
 		product.setName("list 7");
-		productos.add(product);
+		products.add(product);
 		
 		mngr.save(product);
 		
-		productos = mngr.getAll();
+		setProducts(mngr.getAll());
 		
 		return SUCCESS;
 	}
@@ -64,7 +64,7 @@ public class ProductAction extends ActionSupport {
 		// en este caso el objeto producto ya está inicializado y el único valor que tiene es el id
 		//productos.add(product);
 		mngr.save(product);
-		productos = mngr.getAll();
+		setProducts(mngr.getAll());
 		return SUCCESS;
 	}
 	
@@ -84,12 +84,12 @@ public class ProductAction extends ActionSupport {
 		this.product = product;
 	}
 	
-	public List<Product> getProductos() {
-		return productos;
+	public List<Product> getProducts() {
+		return products;
 	}
 
-	public void setProductos(List<Product> productos) {
-		this.productos = productos;
+	public void setProducts(List<Product> productos) {
+		this.products = productos;
 	}
 
 }

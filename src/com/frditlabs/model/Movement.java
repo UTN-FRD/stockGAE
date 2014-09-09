@@ -10,9 +10,9 @@ import com.googlecode.objectify.annotation.Index;
 public class Movement {
 	@Id private Long id;
 	private Date date;
-	private Long cantidad;
+	private Long amount;
 	private String description;
-	@Index private Long lotId;
+	@Index private Long lot;
 
 	public Movement(){}
 
@@ -36,22 +36,22 @@ public class Movement {
 		this.description = description;
 	}
 
-	public void setCantidad(Long cantidad) {
+	public void setAmount(Long amount) {
 		// TODO Auto-generated method stub
-		this.cantidad = cantidad;
+		this.amount= amount;
 	}
-	public Long getCantidad() {
-		return cantidad;
+	public Long getAmount() {
+		return amount;
 	}
 //	public double getCant() {
 //		return (double) this.getCantidad();
 //	}
-	public Long getLotId() {
-		return lotId;
+	public Long getLot() {
+		return lot;
 	}
 
-	public void setLotId(Long lotId) {
+	public void setLot(Long lot) {
 		// TODO Auto-generated method stub
-		this.lotId = lotId;
+		this.lot = lot;
 	}
 }

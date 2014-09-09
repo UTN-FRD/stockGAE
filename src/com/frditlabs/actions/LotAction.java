@@ -32,11 +32,13 @@ public class LotAction extends ActionSupport {
 		return SUCCESS;
 	}
 
-	@Action(value="saveLots", results={
+	@Action(value="saveLot", results={
 			@Result(name="success", location="lot.jsp")
 	})
-	public String saveLots() {
-		System.out.print(productId);
+	public String saveLot() {
+		mngr.save(lot);
+		productId = lot.getProduct();
+		setLots(mngr.getAll(productId));
 		return SUCCESS;
 	}
 

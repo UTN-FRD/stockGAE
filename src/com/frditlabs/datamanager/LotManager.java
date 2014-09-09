@@ -1,7 +1,5 @@
 package com.frditlabs.datamanager;
 
-import static com.frditlabs.persistence.OfyService.ofy;
-
 import java.util.List;
 
 import com.frditlabs.model.Lot;

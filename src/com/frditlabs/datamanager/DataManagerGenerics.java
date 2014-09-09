@@ -17,7 +17,7 @@ public class DataManagerGenerics <T> {
 	}
 
 	public void save(T p) {
-		ofy().save().entity(p);
+		ofy().save().entity(p).now();
 	}
 	
 	public void delete(T p) {

@@ -7,7 +7,7 @@
   <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
   <constant name="struts.devMode" value="true"/>
   <constant name="struts.action.excludePattern" value="/_ah/.*"/>
-
+  <constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
   <constant name="struts.convention.classes.reload" value="true" />
   
   <!-- Usando annotations plugins -->
