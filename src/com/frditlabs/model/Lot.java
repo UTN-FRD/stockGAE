@@ -10,8 +10,8 @@ import com.googlecode.objectify.annotation.Index;
 public class Lot {
 	@Id private Long id;
 	private Date createDate;
-	private Date dueDate;
-	private double initialAmount;
+	@Index private Date dueDate;
+	@Index private double initialAmount;
 	private double currentAmount;
 	@Index private Long product;
 

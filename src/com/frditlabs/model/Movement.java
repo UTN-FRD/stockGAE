@@ -10,7 +10,7 @@ import com.googlecode.objectify.annotation.Index;
 public class Movement {
 	@Id private Long id;
 	private Date date;
-	private Long amount;
+	@Index private Long amount;
 	private String description;
 	@Index private Long lot;
 

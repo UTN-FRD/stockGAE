@@ -1,12 +1,12 @@
 package com.frditlabs.actions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 
-import com.frditlabs.datamanager.DataManagerGenerics;
 import com.frditlabs.datamanager.ProductManager;
 import com.frditlabs.model.Product;
 import com.opensymphony.xwork2.ActionSupport;
@@ -16,8 +16,8 @@ public class ProductAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	Product product;
 	private List<Product> products;
-	private DataManagerGenerics<Product> mngr = new ProductManager();
-	
+	private ProductManager mngr = new ProductManager();
+	private HashMap<Product, Long> productsStock;
 	/**
 	 * (non-Javadoc)
 	 * @see com.opensymphony.xwork2.ActionSupport#execute()
@@ -30,27 +30,6 @@ public class ProductAction extends ActionSupport {
 		})
 	public String execute(){
 		//llamada al DS
-		products = new ArrayList<Product>();
-		product = new Product();
-		product.setId(5l);
-		product.setDescription("list descripcion");
-		product.setName("list");
-		products.add(product);
-		
-		product = new Product();
-		product.setId(6l);
-		product.setDescription("list 5 descripcion");
-		product.setName("list 6");
-		products.add(product);
-		
-		product = new Product();
-		product.setId(7l);
-		product.setDescription("list descripcion 7");
-		product.setName("list 7");
-		products.add(product);
-		
-		mngr.save(product);
-		
 		setProducts(mngr.getAll());
 		
 		return SUCCESS;
@@ -65,6 +44,14 @@ public class ProductAction extends ActionSupport {
 		//productos.add(product);
 		mngr.save(product);
 		setProducts(mngr.getAll());
+		return SUCCESS;
+	}
+	
+	@Action(value="productsAmount", results= {
+			@Result(name="success", location="productsAmount.jsp")
+	})
+	public String listProductsStock() {
+		setProductsStock(mngr.currentStock());
 		return SUCCESS;
 	}
 	
@@ -90,6 +77,14 @@ public class ProductAction extends ActionSupport {
 
 	public void setProducts(List<Product> productos) {
 		this.products = productos;
+	}
+
+	public HashMap<Product, Long> getProductsStock() {
+		return productsStock;
+	}
+
+	public void setProductsStock(HashMap<Product, Long> productsStock) {
+		this.productsStock = productsStock;
 	}
 
 }

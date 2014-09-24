@@ -14,6 +14,7 @@ public class LotAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	private Long productId;
 	private Lot lot;
+	private List<Lot> expLots;
 	private List<Lot> lots;
 	private LotManager mngr = new LotManager();
 	
@@ -39,6 +40,14 @@ public class LotAction extends ActionSupport {
 		mngr.save(lot);
 		productId = lot.getProduct();
 		setLots(mngr.getAll(productId));
+		return SUCCESS;
+	}
+	
+	@Action(value="expiredProducts", results= {
+			@Result(name="success", location="expiredProducts.jsp")
+	})
+	public String expiredLots() {
+		setExpLots(mngr.expiredLots());
 		return SUCCESS;
 	}
 
@@ -68,6 +77,14 @@ public class LotAction extends ActionSupport {
 
 	public void setLots(List<Lot> lots) {
 		this.lots = lots;
+	}
+
+	public List<Lot> getExpLots() {
+		return expLots;
+	}
+
+	public void setExpLots(List<Lot> expLots) {
+		this.expLots = expLots;
 	}
 	
 }
